@@ -257,6 +257,27 @@ body.high-contrast .section-heading {
   font-size: 0.95rem;
 }
 
+/* Amber heading variant for the Practical Help section */
+.section-heading--amber {
+  color: #b45309;
+}
+body.high-contrast .section-heading--amber {
+  color: var(--color-primary);
+}
+
+/* Sub-headings within a section (e.g. Financial / Energy sub-groups) */
+.subsection-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 1.5rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--color-border);
+}
+.subsection-heading:first-of-type {
+  margin-top: 0.25rem;
+}
+
 /* ---------- Search ---------- */
 .search-form {
   display: flex;
