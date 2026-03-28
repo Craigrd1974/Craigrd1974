@@ -538,9 +538,12 @@ let wState = {
 };
 
 // ── Wordle DOM refs ───────────────────────────────────────────
-const wordleGrid     = document.getElementById('wordle-grid');
-const wordleKeyboard = document.getElementById('wordle-keyboard');
-const wordleMsg      = document.getElementById('wordle-message');
+const wordleGrid      = document.getElementById('wordle-grid');
+const wordleKeyboard  = document.getElementById('wordle-keyboard');
+const wordleMsg       = document.getElementById('wordle-message');
+const wordleInputForm = document.getElementById('wordle-input-form');
+const wordleInputEl   = document.getElementById('wordle-input');
+const wordleSubmitBtn = document.getElementById('wordle-submit-btn');
 
 // ── Init ──────────────────────────────────────────────────────
 function initWordle() {
@@ -565,8 +568,25 @@ function initWordle() {
   renderWordleGrid();
   renderWordleKeyboard();
 
+  // Wire up the text input box
+  wordleInputForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitWordleGuess();
+  });
+
+  wordleInputEl.addEventListener('input', () => {
+    // Force uppercase, letters only, max 5
+    const filtered = wordleInputEl.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 5);
+    wordleInputEl.value = filtered;
+    wState.current = filtered;
+    renderWordleGrid();
+  });
+
   if (wState.gameOver) {
     showWordleEndMessage();
+    disableWordleInput();
+  } else {
+    wordleInputEl.focus();
   }
 
   // Physical keyboard input — only active when no modal is open
@@ -685,8 +705,20 @@ function renderWordleKeyboard() {
 
 // ── Key handling ──────────────────────────────────────────────
 function handlePhysicalKey(e) {
-  // Don't intercept when a modal is open or user is typing in an input
+  // Don't intercept when a modal is open
   if (!contactModal.hidden || !deleteModal.hidden) return;
+
+  // If the wordle input box is focused, let it handle letters/backspace naturally.
+  // Only intercept Enter so it submits the guess.
+  if (document.activeElement === wordleInputEl) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submitWordleGuess();
+    }
+    return;
+  }
+
+  // Don't intercept when typing in any other input/textarea
   if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
 
   if (e.key === 'Enter') {
@@ -703,19 +735,22 @@ function handleWordleKey(key) {
 
   if (key === '⌫') {
     wState.current = wState.current.slice(0, -1);
-    renderWordleGrid();
   } else if (key === 'ENTER') {
     submitWordleGuess();
+    return;
   } else if (/^[A-Z]$/.test(key) && wState.current.length < WORDLE_COLS) {
     wState.current += key;
-    renderWordleGrid();
   }
+
+  // Keep the input box in sync with on-screen keyboard presses
+  wordleInputEl.value = wState.current;
+  renderWordleGrid();
 }
 
 // ── Submit guess ──────────────────────────────────────────────
 function submitWordleGuess() {
   if (wState.current.length < WORDLE_COLS) {
-    setWordleMessage('Not enough letters!');
+    setWordleMessage('Not enough letters — type a 5-letter word!');
     shakeRow(wState.guesses.length);
     return;
   }
@@ -725,6 +760,9 @@ function submitWordleGuess() {
 
   wState.guesses.push({ word, score });
   wState.current = '';
+
+  // Clear the input box immediately
+  wordleInputEl.value = '';
 
   // Animate the submitted row, then update state
   animateRow(wState.guesses.length - 1, score, () => {
@@ -737,14 +775,23 @@ function submitWordleGuess() {
       saveWordleState();
       animateBounce(wState.guesses.length - 1);
       showWordleEndMessage();
+      disableWordleInput();
     } else if (wState.guesses.length === WORDLE_ROWS) {
       wState.gameOver = true;
       saveWordleState();
       showWordleEndMessage();
+      disableWordleInput();
     } else {
       setWordleMessage('');
+      wordleInputEl.focus();
     }
   });
+}
+
+function disableWordleInput() {
+  wordleInputEl.disabled = true;
+  wordleSubmitBtn.disabled = true;
+  wordleInputEl.placeholder = 'Come back tomorrow!';
 }
 
 // ── Score a guess ─────────────────────────────────────────────
