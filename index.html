@@ -76,6 +76,27 @@
           <h3 class="subsection-heading">&#128270; Word of the Day Puzzle</h3>
           <p class="section-desc wordle-intro">Guess the 5-letter word in 6 tries. <span class="wordle-legend"><span class="legend-tile legend-correct">A</span> Right letter, right place &nbsp; <span class="legend-tile legend-present">B</span> Right letter, wrong place &nbsp; <span class="legend-tile legend-absent">C</span> Not in word</span></p>
           <p id="wordle-message" role="alert" aria-live="assertive" class="wordle-message"></p>
+          <form class="wordle-input-form" id="wordle-input-form" autocomplete="off">
+            <label for="wordle-input" class="wordle-input-label">Type your 5-letter guess:</label>
+            <div class="wordle-input-row">
+              <input
+                type="text"
+                id="wordle-input"
+                class="wordle-input"
+                maxlength="5"
+                placeholder="e.g. BREAD"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                aria-label="Type your 5-letter word guess here"
+                aria-describedby="wordle-message"
+              >
+              <button type="submit" class="btn btn-primary wordle-submit-btn" id="wordle-submit-btn">
+                Submit
+              </button>
+            </div>
+          </form>
           <div id="wordle-grid" class="wordle-grid" aria-label="Wordle puzzle grid"></div>
           <div id="wordle-keyboard" class="wordle-keyboard" aria-label="On-screen keyboard for Wordle puzzle"></div>
         </div>

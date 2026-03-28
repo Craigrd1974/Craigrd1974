@@ -743,11 +743,62 @@ body.high-contrast .form-input {
   color: #ffffff;
 }
 .legend-correct  { background: #538d4e; }
-.legend-present  { background: #b59f3b; }
+.legend-present  { background: #D97706; }
 .legend-absent   { background: #3a3a3c; }
 body.high-contrast .legend-correct  { background: #00cc44; color: #000; }
 body.high-contrast .legend-present  { background: #ffff00; color: #000; }
 body.high-contrast .legend-absent   { background: #555555; color: #fff; }
+
+/* Input box */
+.wordle-input-form {
+  margin-bottom: 1rem;
+}
+.wordle-input-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+.wordle-input-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.wordle-input {
+  flex: 0 0 auto;
+  width: 220px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: var(--btn-height);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.wordle-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+.wordle-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+body.high-contrast .wordle-input {
+  background: #000;
+  border-color: #fff;
+  color: #fff;
+}
+.wordle-submit-btn {
+  min-width: 110px;
+}
 
 /* Message bar */
 .wordle-message {
@@ -806,8 +857,8 @@ body.high-contrast .wordle-message {
   animation: wordle-flip 0.4s ease forwards;
 }
 .wordle-tile.present {
-  background: #b59f3b;
-  border-color: #b59f3b;
+  background: #D97706;
+  border-color: #D97706;
   color: #ffffff;
   animation: wordle-flip 0.4s ease forwards;
 }
@@ -906,7 +957,7 @@ body.high-contrast .wordle-tile.absent   { background: #444444; border-color: #4
   color: #ffffff;
 }
 .wordle-key.present {
-  background: #b59f3b;
+  background: #D97706;
   color: #ffffff;
 }
 .wordle-key.absent {
