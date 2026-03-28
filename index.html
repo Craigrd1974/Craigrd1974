@@ -57,7 +57,31 @@
         <p class="search-hint">Tip: You can also ask questions like "What is the weather today?" or "How do I contact my doctor?"</p>
       </section>
 
-      <!-- SECTION 2: HEALTH SUPPORT -->
+      <!-- SECTION 2: TODAY (TIP + WORDLE) -->
+      <section class="card-section today-section" aria-labelledby="today-heading">
+        <h2 id="today-heading" class="section-heading">
+          <span aria-hidden="true">&#9728;</span> Today
+        </h2>
+
+        <!-- Daily Tip -->
+        <div class="today-tip">
+          <h3 class="subsection-heading">&#128161; Today's Wellbeing Tip</h3>
+          <blockquote id="daily-tip" class="daily-tip" aria-live="polite">
+            <!-- Tip rendered by JS -->
+          </blockquote>
+        </div>
+
+        <!-- Wordle -->
+        <div class="today-wordle">
+          <h3 class="subsection-heading">&#128270; Word of the Day Puzzle</h3>
+          <p class="section-desc wordle-intro">Guess the 5-letter word in 6 tries. <span class="wordle-legend"><span class="legend-tile legend-correct">A</span> Right letter, right place &nbsp; <span class="legend-tile legend-present">B</span> Right letter, wrong place &nbsp; <span class="legend-tile legend-absent">C</span> Not in word</span></p>
+          <p id="wordle-message" role="alert" aria-live="assertive" class="wordle-message"></p>
+          <div id="wordle-grid" class="wordle-grid" aria-label="Wordle puzzle grid"></div>
+          <div id="wordle-keyboard" class="wordle-keyboard" aria-label="On-screen keyboard for Wordle puzzle"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: HEALTH SUPPORT -->
       <section class="card-section" aria-labelledby="health-heading">
         <h2 id="health-heading" class="section-heading">
           <span aria-hidden="true">&#10133;</span> Health &amp; Wellbeing
@@ -315,16 +339,6 @@
           </div>
 
         </div><!-- /.health-grid -->
-      </section>
-
-      <!-- SECTION 5: DAILY TIP -->
-      <section class="card-section tip-section" aria-labelledby="tip-heading">
-        <h2 id="tip-heading" class="section-heading">
-          <span aria-hidden="true">&#127774;</span> Today's Wellbeing Tip
-        </h2>
-        <blockquote id="daily-tip" class="daily-tip" aria-live="polite">
-          <!-- Tip rendered by JS -->
-        </blockquote>
       </section>
 
     </div><!-- /.container -->
