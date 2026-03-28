@@ -1,29 +1,34 @@
-- 👋 Hi, I’m @Craigrd1974
-- 👀 I’m interested in reigniting and developing my coding skills
-- 🌱 I’m currently learning how to develop new skills and techniques
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me LinkedIn
-- 😄 Pronouns: he/ him
-- ⚡ Fun fact: I’ve got 2 dogs and a campervan
+# CareConnect — Pensioner Support Site
 
----
+An accessible, easy-to-use web app designed to help pensioners with everyday needs — all in one place.
 
-## ❤️ CareConnect — Pensioner Support Site
+## Features
 
-A simple, accessible web app designed to help pensioners with everyday needs — all in one place.
+- **Web Search** — Large, simple search bar to search Google
+- **Today's Wellbeing Tip** — A fresh health tip every day
+- **Word of the Day Puzzle** — A daily Wordle-style puzzle (5-letter word, 6 attempts, green/amber colour coding)
+- **Health & Wellbeing** — Quick links to NHS 111, Find a GP, Find a Pharmacy, NHS Health A–Z, Age UK, Samaritans
+- **My Family & Friends** — Save emergency contacts with one-tap Call, WhatsApp, and Email buttons (stored locally in your browser)
+- **Practical Help & Support**
+  - Financial: Citizens Advice, Pension Credit, Benefits Calculator, National Debtline
+  - Keeping Warm: Cold Weather Payment, Warm Home Discount, Ofgem advice, Energy Saving Trust
+  - Other: GOV.UK, local council finder, free bus pass, Silver Line helpline
 
-**Features:**
-- 🔍 **Web Search** — Large, easy-to-use search bar to search Google
-- 🏥 **Health & Wellbeing** — Quick links to NHS 111, Find a GP, Find a Pharmacy, Age UK, and Samaritans
-- 👨‍👩‍👧 **Family & Friends** — Save emergency contacts with one-tap call, email, and WhatsApp buttons
-- 💡 **Daily Wellbeing Tips** — A fresh health tip every day
-- ♿ **Accessible by design** — Large text options, high contrast mode, keyboard navigable
+## Accessibility
 
-**Built with:** HTML5, CSS3, Vanilla JavaScript — no frameworks, no build step required.
+- Text size toggle (Normal / Large / Extra Large)
+- High contrast mode
+- Full keyboard navigation with focus trapping in modals
+- WCAG AA colour contrast throughout
+- Works on mobile screens from 320px wide
+- All interactive elements have accessible labels
 
-**To use locally:** Download the files and open `index.html` in any web browser.
+## To Use
 
-<!---
-Craigrd1974/Craigrd1974 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+Download or clone the repository, then open `index.html` in any web browser. No build step or server required.
+
+Or enable **GitHub Pages** in repo Settings → Pages → Source: `main` branch to host it live.
+
+## Built With
+
+Plain HTML5, CSS3, and Vanilla JavaScript — no frameworks, no dependencies.
